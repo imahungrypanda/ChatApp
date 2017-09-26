@@ -1,18 +1,18 @@
 const express = require('express');
 const app = express();
-var server = require('http').createServer(app);
+const http = require('http').createServer(app);
+const path = require('path');
 
+const chatServer = require('./lib/chatServer');
 
+const PORT = 8000;
+
+chatServer.listen(http);
 
 app.use(express.static('public'));
 
-app.listen(8000, () => console.log('localhost:8000'));
-
-// io.sockets.on('connection', function (socket) {
-//     socket.on('news', function (data) {
-//         socket.emit('news', { content: data.text });
-//         socket.broadcast.emit('news', { content: data.text});
-//     });
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'index.html'))
 // });
 
-// console.log(io);
+http.listen(PORT, () => console.log(`localhost:${PORT}`));
