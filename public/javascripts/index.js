@@ -1,8 +1,3 @@
-var socket = io.connect('http://localhost:8000/');
-socket.on('news', function (data) {
-  document.body.innerHTML += data.content + "<br />";
+document.addEventlistener('DOMContentLoaded', () => {
+  const socket = require('socket.io-client')
 });
-
-function sendMessage() {
-    socket.emit('news', { text: document.getElementById('Username').value + ": " + document.getElementById('Content').value });
-}
